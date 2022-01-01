@@ -1,7 +1,7 @@
 use utau_rs::*;
 
 #[allow(non_camel_case_types)]
-#[derive(Clone,Debug)]
+#[derive(Clone,Copy,Debug,Eq,PartialEq)]
 pub enum Scale{
     C,C_sharp,Cm,Cm_sharp,
     D,D_sharp,Dm,Dm_sharp,
@@ -13,11 +13,34 @@ pub enum Scale{
 }
 
 impl Scale{
+    pub const ALL: [Scale;28]=[
+        Scale::C,Scale::C_sharp,Scale::Cm,Scale::Cm_sharp,
+        Scale::D,Scale::D_sharp,Scale::Dm,Scale::Dm_sharp,
+        Scale::E,Scale::E_sharp,Scale::Em,Scale::Em_sharp,
+        Scale::F,Scale::F_sharp,Scale::Fm,Scale::Fm_sharp,
+        Scale::G,Scale::G_sharp,Scale::Gm,Scale::Gm_sharp,
+        Scale::A,Scale::A_sharp,Scale::Am,Scale::Am_sharp,
+        Scale::B,Scale::B_sharp,Scale::Bm,Scale::Bm_sharp,
+    ];
 }
 
 impl Default for Scale{
     fn default()->Self{
         Scale::C
+    }
+}
+
+impl std::fmt::Display for Scale{
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>)->std::fmt::Result{
+        write!(f,"{}",match self{
+            Scale::C=>"C",Scale::C_sharp=>"C#",Scale::Cm=>"Cm",Scale::Cm_sharp=>"C#m",
+            Scale::D=>"D",Scale::D_sharp=>"D#",Scale::Dm=>"Dm",Scale::Dm_sharp=>"D#m",
+            Scale::E=>"E",Scale::E_sharp=>"E#",Scale::Em=>"Em",Scale::Em_sharp=>"E#m",
+            Scale::F=>"F",Scale::F_sharp=>"F#",Scale::Fm=>"Fm",Scale::Fm_sharp=>"F#m",
+            Scale::G=>"G",Scale::G_sharp=>"G#",Scale::Gm=>"Gm",Scale::Gm_sharp=>"G#m",
+            Scale::A=>"A",Scale::A_sharp=>"A#",Scale::Am=>"Am",Scale::Am_sharp=>"A#m",
+            Scale::B=>"B",Scale::B_sharp=>"B#",Scale::Bm=>"Bm",Scale::Bm_sharp=>"B#m",
+        })
     }
 }
 

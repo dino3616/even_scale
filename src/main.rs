@@ -29,7 +29,7 @@ fn main(){
 
     // 主要処理
     let window_setting=iced::window::Settings{
-        size: (320,240),
+        size: (640,480),    // (320,240)
         min_size: None,
         max_size: None,
         resizable: false,
