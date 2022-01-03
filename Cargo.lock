@@ -2346,7 +2346,7 @@ dependencies = [
 [[package]]
 name = "utau_rs"
 version = "0.1.0"
-source = "git+https://github.com/dino3616/utau_rs?branch=main#afe7042a7088d77926a7e6d87f5da4fe5300a6fa"
+source = "git+https://github.com/dino3616/utau_rs?branch=main#4261768f232adb32916f2866e2fba0006ff97df6"
 dependencies = [
  "encoding_rs",
 ]
