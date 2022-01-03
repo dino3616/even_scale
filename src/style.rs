@@ -1,8 +1,8 @@
 use iced::{Background,button,Color,container,pick_list};
 
-const BACKGROUND_R: u8=0x36;
-const BACKGROUND_G: u8=0x39;
-const BACKGROUND_B: u8=0x3F;
+const CONTAINER_R: u8=0x36;
+const CONTAINER_G: u8=0x39;
+const CONTAINER_B: u8=0x3F;
 const BUTTON_R: u8=0xFF;
 const BUTTON_G: u8=0x65;
 const BUTTON_B: u8=0x1C;
@@ -11,8 +11,9 @@ pub struct Container;
 impl container::StyleSheet for Container{
     fn style(&self)->container::Style{
         container::Style{
-            background: Some(Background::Color(Color::from_rgb8(BACKGROUND_R,BACKGROUND_G,BACKGROUND_B))),
-            text_color: Some(Color::WHITE),
+            text_color: Some(Color::from_rgb8(BUTTON_R,BUTTON_G,BUTTON_B)),
+            background: Some(Background::Color(Color::from_rgb8(CONTAINER_R,CONTAINER_G,CONTAINER_B))),
+            border_radius: 10.0,
             ..container::Style::default()
         }
     }
@@ -24,7 +25,7 @@ impl button::StyleSheet for Button{
         button::Style{
             background: Some(Background::Color(Color::from_rgb8(BUTTON_R,BUTTON_G,BUTTON_B))),
             border_radius: 10.0,
-            text_color: Color::from_rgb8(BACKGROUND_R,BACKGROUND_G,BACKGROUND_B),
+            text_color: Color::from_rgb8(CONTAINER_R,CONTAINER_G,CONTAINER_B),
             ..button::Style::default()
         }
     }
@@ -59,7 +60,7 @@ impl pick_list::StyleSheet for PickList{
 
     fn active(&self)->pick_list::Style{
         pick_list::Style{
-            text_color: Color::from_rgb8(BACKGROUND_R,BACKGROUND_G,BACKGROUND_B),
+            text_color: Color::from_rgb8(CONTAINER_R,CONTAINER_G,CONTAINER_B),
             icon_size: 0.5,
             ..pick_list::Style::default()
         }

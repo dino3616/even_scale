@@ -1,13 +1,14 @@
-use iced::{Align,button,Button,Column,Container,Element,HorizontalAlignment,Length,pick_list,PickList,Row,Sandbox,Text};
+use std::process;
+use iced::{button,Button,Color,Column,Container,Element,HorizontalAlignment,Length,pick_list,PickList,Row,Sandbox,Text};
+use utau_rs::*;
 use super::{even_scale::*,style::*};
 
 #[derive(Default)]
 pub struct State{
-    pub pick_list: pick_list::State<Scale>,
-    pub selected_scale: Option<Scale>,
-    pub run: button::State,
-    pub cancel: button::State,
-    pub should_run: bool,
+    selected_scale: Option<Scale>,
+    uta_sections: utau_rs::UtaSections,
+    pick_list: pick_list::State<Scale>,
+    run: button::State,
 }
 
 #[derive(Clone,Debug)]
@@ -30,7 +31,9 @@ impl Sandbox for State{
     fn update(&mut self,message: Message){
         match message{
             Message::ScaleSelect(scale)=>self.selected_scale=Some(scale),
-            Message::Run=>self.should_run=true,
+            Message::Run=>{
+                process::exit(0);
+            }
         }
     }
 
@@ -72,5 +75,9 @@ impl Sandbox for State{
             .center_y()
             .style(Container)
             .into()
+    }
+
+    fn background_color(&self)->Color{
+        Color::TRANSPARENT
     }
 }
