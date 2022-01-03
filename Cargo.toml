@@ -2,10 +2,19 @@
 name = "even_scale"
 version = "0.1.0"
 edition = "2021"
+build = "build.rs"
+
+[build-dependencies]
+winres = "0.1"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-iced = "0.3"
+iced = {version = "0.3", features = ["image"]}
 iced_native = "0.4"
 utau_rs = {git = "https://github.com/dino3616/utau_rs", branch = "main"}
+
+[profile.release]
+lto=true
+opt-level="z"
+codegen-units=1

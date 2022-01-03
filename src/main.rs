@@ -1,15 +1,18 @@
-//#![windows_subsystem="windows"]
+#![windows_subsystem="windows"]
 
 mod even_scale;
 mod app;
 mod style;
 
 use std::process;
-use iced::{Sandbox,Settings};
+use iced::{Application,Settings};
+
+const WINDOW_WIDTH: u32=640;
+const WINDOW_HEIGHT: u32=480;
 
 fn main(){
     let window_setting=iced::window::Settings{
-        size: (640,480),
+        size: (WINDOW_WIDTH,WINDOW_HEIGHT),
         min_size: None,
         max_size: None,
         resizable: false,
@@ -20,7 +23,7 @@ fn main(){
     };
     let settings=Settings{
         window: window_setting,
-        default_font: Some(include_bytes!("..\\fonts\\NotoSansJP-Regular.otf")),
+        default_font: Some(include_bytes!("../fonts/NotoSansJP-Bold.otf")),
         ..Settings::default()
     };
 

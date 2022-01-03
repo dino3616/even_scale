@@ -1,0 +1,2 @@
+name=even_scale
+execute=even_scale.exe
