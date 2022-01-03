@@ -6,7 +6,7 @@ use super::{even_scale::*,style::*};
 #[derive(Default)]
 pub struct State{
     selected_scale: Option<Scale>,
-    uta_sections: utau_rs::UtaSections,
+    uta_sections: UtaSections,
     pick_list: pick_list::State<Scale>,
     run: button::State,
 }
@@ -32,6 +32,15 @@ impl Sandbox for State{
         match message{
             Message::ScaleSelect(scale)=>self.selected_scale=Some(scale),
             Message::Run=>{
+                if let Err(err)=even_scale(&mut self.uta_sections,self.selected_scale.unwrap()){
+                    eprint!("Error：{}\n",err);
+                    process::exit(1);
+                }
+
+                if let Err(err)=self.uta_sections.write(){
+                    eprint!("Error：{}\n",err);
+                    process::exit(1);
+                }
                 process::exit(0);
             }
         }

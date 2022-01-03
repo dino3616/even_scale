@@ -80,8 +80,8 @@ impl KeyTone{
     }
 }
 
-pub fn even_scale(uta_sections: &mut UtaSections,scale: &Scale)->Result<(),&'static str>{
-    let tones=KeyTone::new(scale).unwrap();
+pub fn even_scale(uta_sections: &mut UtaSections,scale: Scale)->Result<(),&'static str>{
+    let tones=KeyTone::new(&scale).unwrap();
 
     for section in uta_sections.sections.iter_mut(){
         if tones.unwrap().iter().all(|&x|(x%section.note_num)!=0){
